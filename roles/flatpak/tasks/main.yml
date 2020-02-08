@@ -4,7 +4,7 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-  tags: [application, flatpak]
+  tags: [applications, flatpak]
 
 - name: Intall Packages
   flatpak:
