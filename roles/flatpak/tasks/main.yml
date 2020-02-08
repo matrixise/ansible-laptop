@@ -1,0 +1,24 @@
+- name: Add FlatHub Repo
+  flatpak_remote:
+    method: user
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  tags: [application, flatpak]
+
+- name: Intall Packages
+  flatpak:
+    name: "{{ item }}"
+    state: present
+    method: user
+  # command: flatpak install --assumeyes --user flathub {{ item }}
+  loop:
+    - com.github.marktext.marktext
+    - com.slack.Slack
+    - com.spotify.Client
+    - com.visualstudio.code
+    - io.dbeaver.DBeaverCommunity
+    - org.signal.Signal
+    - org.telegram.desktop
+    - org.zulip.Zulip
+  tags: [applications, flatpak]

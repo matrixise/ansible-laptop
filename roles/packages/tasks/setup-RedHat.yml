@@ -5,4 +5,11 @@
       - python3-psutil
       - neovim
       - tig
+      - zeal
+    state: present
+
+- name: Install Network Tools
+  dnf:
+    name:
+      - NetworkManager-tui
     state: present
