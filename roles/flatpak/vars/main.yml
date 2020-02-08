@@ -1,0 +1,9 @@
+flatpak_packages:
+  - com.github.marktext.marktext
+  - com.slack.Slack
+  - com.spotify.Client
+  - com.visualstudio.code
+  - io.dbeaver.DBeaverCommunity
+  - org.signal.Signal
+  - org.telegram.desktop
+  - org.zulip.Zulip
