@@ -1,0 +1,6 @@
+- name: Install Packages
+  hosts: localhost
+  become: true
+
+  roles:
+    - role: packages
