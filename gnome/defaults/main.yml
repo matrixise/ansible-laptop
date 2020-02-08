@@ -1,0 +1,6 @@
+top_bar:
+  clock-format: "'12h'"
+  clock-show-date: "true"
+  clock-show-seconds: "true"
+  clock-show-weekday: "true"
+  show-battery-percentage: "true"

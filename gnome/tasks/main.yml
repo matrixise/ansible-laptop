@@ -1,0 +1,6 @@
+- name: Configure Top Bar
+  dconf:
+    key: "/org/gnome/desktop/interface/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  loop: "{{ top_bar|dict2items }}"

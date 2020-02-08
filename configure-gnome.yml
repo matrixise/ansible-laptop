@@ -1,0 +1,7 @@
+- name: Configure Gnome
+  hosts: localhost
+  roles:
+    - role: gnome
+
+  tags:
+    - interface
