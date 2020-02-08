@@ -1,3 +1,4 @@
 ---
+- import_playbook: install-packages.yml
 - import_playbook: install-flatpak-packages.yml
 - import_playbook: configure-gnome.yml
