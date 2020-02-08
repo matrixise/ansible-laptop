@@ -1,6 +1,9 @@
 ---
-- import_playbook: install-packages.yml
-- name: Install Flatpak Packages
+- name: Install Laptop
   hosts: localhost
-  roles: [flatpak]
-- import_playbook: configure-gnome.yml
+  roles:
+    - role: packages
+      become: yes
+
+    - flatpak
+    - gnome

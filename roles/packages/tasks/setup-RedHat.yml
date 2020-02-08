@@ -1,5 +1,0 @@
-- name: Install Network Tools
-  dnf:
-    name:
-      - NetworkManager-tui
-    state: present

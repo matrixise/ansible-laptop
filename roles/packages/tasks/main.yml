@@ -1,17 +1,7 @@
-- include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-- include_tasks: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
-- name: Install Common Packages
+- include_vars: commons.yml
+- include_vars: vars-{{ ansible_os_family }}.yml
+
+- name: Install Packages
   package:
-    name: "{{ item }}"
+    name: "{{ packages + distribution_packages }}"
     state: present
-  loop:
-    - python3-pip
-    - python3-psutil
-    - neovim
-    - tig
-    - zeal
-    - tig
-    - neovim
-    - fish
