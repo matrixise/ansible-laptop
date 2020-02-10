@@ -1,0 +1,17 @@
+- name: Check if ~/.config/fish exists
+  stat:
+    path: ~/.config/fish
+  register: status
+
+- name: Create ~/.config/fish
+  file:
+    path: ~/.config/fish
+    state: directory
+    owner: "{{ user.id }}"
+    group: "{{ user.id }}"
+  when: status.stat.isdir is not defined
+
+- name: Create the fish config file
+  template:
+    src: fish.config.fish.j2
+    dest: ~/.config/fish/config.fish
