@@ -10,4 +10,5 @@
     - gnome
     - python
     - user_space
-    - git_repositories
+    - role: git_repositories
+      tags: [git]
