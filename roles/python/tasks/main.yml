@@ -9,7 +9,7 @@
     extra_args: --user --upgrade
 
 - name: Install Python Packages
-  command: "pipx install {{ item }}"
+  command: "~/.local/bin/pipx install {{ item }}"
   loop:
     - ansible-lint
     - cookiecutter
