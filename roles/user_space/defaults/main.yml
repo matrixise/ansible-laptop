@@ -61,7 +61,7 @@ git_options:
   user.email: stephane@wirtel.be
   user.name: Stéphane Wirtel
   core.quotepath: 'false'
-  core.autocrlf: input
+  # core.autocrlf: input
   core.editor: /usr/bin/nvim
   push.default: simple
 

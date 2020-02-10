@@ -15,3 +15,26 @@
   template:
     src: fish.config.fish.j2
     dest: ~/.config/fish/config.fish
+
+- name: Clone oh-my-fish repo
+  git:
+    repo: https://github.com/oh-my-fish/oh-my-fish
+    dest: /tmp/omf
+    clone: yes
+  tags: [fish]
+
+- name: Install oh-my-fish
+  command: >
+    /tmp/omf/bin/install
+    --yes
+    --offline
+    --noninteractive
+    --path=~/.local/share/omf
+    --config=~/.config/omf
+
+  tags: [fish]
+  # ignore_errors: yes
+
+# - name: Install tmux/plugins/bobthefish
+#   command: "omf install bobthefish"
+#   tags: [fish]
