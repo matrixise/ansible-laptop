@@ -3,3 +3,4 @@
 - import_tasks: gitconfig.yml
 - import_tasks: fish.yml
 - import_tasks: tmux.yml
+- import_tasks: kitty.yml
