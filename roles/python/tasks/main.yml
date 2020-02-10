@@ -12,11 +12,15 @@
   command: "pipx install {{ item }}"
   loop:
     - ansible-lint
+    - cookiecutter
     - doc2dash
     - docker-compose
+    - httpie
     - molecule
     - poetry
+    - pygments
     - ranger
     - stormssh
     - tmuxp
+    - virtualfish
     - youtube-dl
