@@ -1,3 +1,4 @@
+---
 - name: Configure Top Bar
   dconf:
     key: "/org/gnome/desktop/interface/{{ item.key }}"
