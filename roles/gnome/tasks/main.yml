@@ -1,7 +1,30 @@
 ---
+- name: Install Gnome Extenions
+  import_role:
+    name: jaredhocutt.gnome_extensions
+  vars:
+    gnome_extension_ids:
+      - 19
+      - 770
+      - 964
+  tags: [gnome]
+
 - name: Configure Top Bar
   dconf:
     key: "/org/gnome/desktop/interface/{{ item.key }}"
     value: "{{ item.value }}"
     state: present
   loop: "{{ top_bar|dict2items }}"
+
+- name: Download Gnome
+  git:
+    repo: https://github.com/mrbrownstone07/Transparent-Shell-Theme
+    dest: ~/.themes/Transparent-Shell-Theme
+  tags: [gnome]
+
+- name: Configure Gnome Shell Theme
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme/name"
+    value: '"Transparent-Shell-Theme"'
+    state: present
+  tags: [gnome]

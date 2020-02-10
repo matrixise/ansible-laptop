@@ -4,3 +4,5 @@ top_bar:
   clock-show-seconds: "true"
   clock-show-weekday: "true"
   show-battery-percentage: "true"
+
+gnome_shell_theme: Transparent-Shell-Theme
