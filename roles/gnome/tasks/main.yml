@@ -7,24 +7,19 @@
       - 19
       - 770
       - 964
-  tags: [gnome]
+  tags: [gnome, gnome-extensions]
 
-- name: Configure Top Bar
-  dconf:
-    key: "/org/gnome/desktop/interface/{{ item.key }}"
-    value: "{{ item.value }}"
-    state: present
-  loop: "{{ top_bar|dict2items }}"
-
-- name: Download Gnome
+- name: Download Gnome Transparent Theme
   git:
     repo: https://github.com/mrbrownstone07/Transparent-Shell-Theme
     dest: ~/.themes/Transparent-Shell-Theme
   tags: [gnome]
 
-- name: Configure Gnome Shell Theme
+- name: Configure Gnome
   dconf:
-    key: "/org/gnome/shell/extensions/user-theme/name"
-    value: '"Transparent-Shell-Theme"'
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
     state: present
-  tags: [gnome]
+  loop: "{{ dconf|dict2items }}"
+  tags: [gnome, dconf]
+
