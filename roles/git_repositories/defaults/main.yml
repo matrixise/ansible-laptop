@@ -1,0 +1,11 @@
+---
+code_workspace:
+  source_dir: ~/src
+  hosts:
+    - name: github
+      fqdn: github.com
+      repositories:
+        - python/cpython
+        - python/devguide
+        - Kapeli/feeds
+        - webknjaz/ansible-gentoo-laptop

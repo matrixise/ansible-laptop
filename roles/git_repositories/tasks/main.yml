@@ -1,0 +1,11 @@
+---
+- name: Create the source dir for the git repositories
+  file:
+    path: "{{ code_workspace.source_dir }}"
+    state: directory
+
+- name: Sync source code repositories
+  git:
+    repo: "https://{{ item.0.fqdn }}/{{ item.1 }}"
+    dest: "{{ code_workspace.source_dir }}/{{ item.0.fqdn }}/{{ item.1 }}"
+  loop: "{{ code_workspace.hosts|subelements('repositories') }}"
