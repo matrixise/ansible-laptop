@@ -1,0 +1,7 @@
+---
+- name: Change User
+  become: yes
+  user:
+    name: "{{ user.id }}"
+    comment: "{{ user.name }}"
+    shell: "{{ user.shell }}"

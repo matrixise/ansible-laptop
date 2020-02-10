@@ -82,3 +82,8 @@ git_options:
     !bash -c "git fetch upstream pull/${1}/head:pr_${1} && git worktree add ../$(basename $(git rev-parse --show-toplevel))-pr-${1} pr_${1}" -
   alias.visual: >-
     !tig
+
+user:
+  id: stephane
+  name: Stéphane Wirtel
+  shell: /usr/bin/fish
