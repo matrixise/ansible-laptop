@@ -29,10 +29,10 @@
     group: stephane
   when: status.stat.isdir is not defined
 
-- name: Generate a NeoVim config from the template
+- name: Generate a NeoVIM  config from the template
   template:
     src: init.vim.j2
     dest: ~/.config/nvim/init.vim
 
-# - command: nvim +PlugClean! +qall
-- command: nvim +PlugInstall! +qall
+- name: Install the NeoVIM plugins
+  command: nvim +PlugInstall! +qall
