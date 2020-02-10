@@ -37,6 +37,8 @@ packages:
   - jq
   - kcachegrind
   - kitty
+  - kitty-doc
+  - kitty-terminfo
   - llvm
   - lshw
   - lynis
