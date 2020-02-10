@@ -19,7 +19,7 @@
     - molecule
     - poetry
     - pygments
-    - ranger
+    - ranger-fm
     - stormssh
     - tmuxp
     - virtualfish
