@@ -2,3 +2,4 @@
 - import_tasks: neovim.yml
 - import_tasks: gitconfig.yml
 - import_tasks: fish.yml
+- import_tasks: tmux.yml
