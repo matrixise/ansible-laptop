@@ -31,8 +31,6 @@ distribution_packages:
   - openttd-opengfx
   - openttd-openmsx
   - openttd-opensfx
-  - pipx
-  - python-openssl
   - python3-dnspython
   - python3-venv
   - sqlite3
