@@ -22,5 +22,9 @@
     - ranger-fm
     - stormssh
     - tmuxp
-    - virtualfish
     - youtube-dl
+
+- name: install virtualfish
+  pip:
+    name: virtualfish
+    extra_args: --user --upgrade
