@@ -1,0 +1,38 @@
+- name: Check if directory for vim-plug alreasy exist
+  stat:
+    path: ~/.local/share/nvim/site/autoload/
+  register: status
+- name: Create Directori for nvim
+  file:
+    path: ~/.local/share/nvim/site/autoload/
+    state: directory
+    owner: stephane
+    group: stephane
+  when: status.stat.isdir is not defined
+
+- name: Download vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+  when: status.stat.isdir is not defined
+
+- name: Check if ~/.config/nvim exists
+  stat:
+    path: ~/.config/nvim
+  register: status
+
+- name: Create ~/.config/nvim
+  file:
+    path: ~/.config/nvim
+    state: directory
+    owner: stephane
+    group: stephane
+  when: status.stat.isdir is not defined
+
+- name: Generate a NeoVim config from the template
+  template:
+    src: init.vim.j2
+    dest: ~/.config/nvim/init.vim
+
+# - command: nvim +PlugClean! +qall
+- command: nvim +PlugInstall! +qall

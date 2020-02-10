@@ -7,3 +7,5 @@ packages:
   - fish
   - most
   - tmux
+  - openssh-server
+  - yamllint

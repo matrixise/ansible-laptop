@@ -1,5 +1,6 @@
 ---
 - name: Install Laptop
+
   hosts: localhost
   roles:
     - role: packages
@@ -8,3 +9,4 @@
     - flatpak
     - gnome
     - python
+    - user_space

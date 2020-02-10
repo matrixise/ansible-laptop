@@ -1,0 +1,13 @@
+# - include_vars:
+#     file: vars/github_vault.yml
+
+# - name: Create .gitconfig
+#   template:
+#     src: gitconfig.j2
+#     dest: ~/.gitconfig
+#     owner: stephane
+#     group: stephane
+#   tags: ['user', 'git']
+
+- import_tasks: neovim.yml
+- import_tasks: gitconfig.yml

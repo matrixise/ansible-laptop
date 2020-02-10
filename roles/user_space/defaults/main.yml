@@ -1,0 +1,84 @@
+---
+nvim:
+  plugins:
+    - id: mileszs/ack.vim
+    - id: w0rp/ale
+    - id: ctrlpvim/ctrlp.vim
+    - id: deoplete-plugins/deoplete-jedi
+    - id: Shougo/deoplete.nvim
+      config:
+        do: ':UpdateRemotePlugins'
+    - id: editorconfig/editorconfig-vim
+    - id: junegunn/fzf
+      config:
+        dir: '~/.fzf'
+        do: './install --all'
+    - id: junegunn/fzf.vim
+    - id: sjl/gundo.vim
+    - id: cocopon/iceberg.vim
+    - id: Yggdroot/indentLine
+    - id: stsewd/isort.nvim
+      config:
+        do: ':UpdateRemotePlugins'
+    - id: neomake/neomake
+    - id: Shougo/neosnippet-snippets
+    - id: Shougo/neosnippet.vim
+    - id: scrooloose/nerdcommenter
+    - id: scrooloose/nerdtree
+    - id: Xuyuanp/nerdtree-git-plugin
+    - id: mhartington/oceanic-next
+    - id: mgedmin/python-imports.vim
+    - id: gu-fan/riv.vim
+    - id: rust-lang/rust.vim
+    - id: vimlab/split-term.vim
+    - id: majutsushi/tagbar
+    - id: vim-airline/vim-airline
+    - id: vim-airline/vim-airline-themes
+    - id: craigemery/vim-autotag
+    - id: tpope/vim-fugitive
+    - id: airblade/vim-gitgutter
+    - id: nathanaelkane/vim-indent-guides
+    - id: plasticboy/vim-markdown
+    - id: mzlogin/vim-markdown-toc
+    - id: terryma/vim-multiple-cursors
+    - id: mhinz/vim-startify
+    - id: janko/vim-test
+    - id: vimwiki/vimwiki
+    - id: rafi/awesome-vim-colorschemes
+    - id: ekalinin/dockerfile.vim
+    - id: godlygeek/tabular
+    - id: jceb/vim-orgmode
+    - id: stephpy/vim-yaml
+    - id: tmhedberg/SimpylFold
+    - id: vim-scripts/indentpython.vim
+    - id: christoomey/vim-tmux-navigator
+    - id: digitaltoad/vim-pug
+    - id: cespare/vim-toml
+
+git_options:
+  commit.verbose: 'true'
+  github.user: matrixise
+  user.email: stephane@wirtel.be
+  user.name: Stéphane Wirtel
+  core.quotepath: 'false'
+  core.autocrlf: input
+  core.editor: /usr/bin/nvim
+  push.default: simple
+
+  alias.branch-name: symbolic-ref --short HEAD
+  alias.ci: commit
+  alias.co: checkout
+  alias.current-rev: >-
+    !sh -c "git rev-parse HEAD" -
+  alias.diffc: diff --cached
+  alias.fetchall: fetch --all --prune
+  alias.last: log -1 HEAD
+  alias.olog: log --oneline
+  alias.pr: >-
+    !sh -c "git fetch upstream pull/${1}/head:pr_${1} && git checkout pr_${1}" -
+  alias.pusho: push origin (git rev-parse --abbrev-ref HEAD)
+  alias.st: status
+  alias.wpr: >-
+    !bash -c "git fetch upstream pull/${1}/head:pr_${1} && git worktree add ../$(basename $(git rev-parse --show-toplevel))-pr-${1} pr_${1}" -
+  alias.visual: >-
+    !tig

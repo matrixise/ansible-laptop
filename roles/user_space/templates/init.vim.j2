@@ -1,0 +1,220 @@
+" nvim config entry point
+" vim:se ft=vim:fileencoding=utf-8:foldmethod=marker
+" https://github.com/junegunn/vim-plug
+set nocompatible
+filetype off
+
+" https://neovim.io/doc/user/provider.html
+let g:loaded_python_provider = 1
+
+call plug#begin()
+{% for plugin in nvim.plugins or [] %}
+Plug '{{ plugin.id }}'{% if plugin.config is defined %}, {{ plugin.config }}{% endif %}
+
+{% endfor %}
+call plug#end()
+
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set softtabstop=4
+set smarttab
+set expandtab
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set scrolloff=5
+set autoindent
+set copyindent
+set showmode
+set showcmd
+set hidden
+set foldenable
+"" "set wildmenu
+"" "set wildmode=list:longest
+"" "set visualbell
+set cursorline
+set exrc
+set secure
+"" "set ttyfast
+set ruler
+"" set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+set numberwidth=6
+set number
+set undofile
+set ignorecase
+set smartcase
+"" set gdefault " s///g <-- by default
+set incsearch
+set showmatch
+set hlsearch
+
+set title
+set helplang=fr
+set nowrap
+set textwidth=80
+
+set signcolumn=yes
+set colorcolumn=73,80,101
+
+set wildignore+=*.pyc,*.o,*.so
+
+set shell=/usr/bin/fish
+filetype plugin indent on
+syntax on
+
+set fileformats=unix
+set splitright
+set splitbelow
+set updatetime=100
+
+
+set backup
+set noswapfile
+
+set undodir=~/.nvim/tmp/undo
+set backupdir=~/.nvim/tmp/backup
+set directory=~/.nvim/tmp/swap
+
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+set t_Co=256
+set termguicolors
+" colorscheme iceberg
+" read: https://github.com/rakr/vim-one
+" colorscheme one
+let g:airline_theme='one'
+
+let mapleader=","
+
+
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.pyc$']
+augroup NERDTree
+	autocmd!
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
+
+" enable the mouse support
+set mouse=a
+
+
+augroup AutoSave
+    autocmd!
+    autocmd FocusLost * :wa
+augroup END
+
+augroup GitCommit
+    autocmd!
+    autocmd FileType gitcommit setlocal spell textwidth=72
+augroup END
+
+
+"nnoremap / /\v
+"vnoremap / /\v
+
+nnoremap <leader><space> :noh<cr>
+" map <leader>w :w!<cr>
+
+
+" nnoremap <tab> %
+" vnoremap <tab> %
+
+noremap <leader>h :<C-u>split<CR>
+noremap <leader>v :<C-u>vsplit<CR>
+
+nmap <C-l> :NERDTreeToggle<cr>
+nmap <C-t> :TagbarToggle<cr>
+
+
+let g:vimwiki_list = [
+    \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}
+    \ ]
+
+vnoremap < <gv
+vnoremap > >gv
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
+
+augroup LoadVim
+    autocmd!
+    autocmd BufWritePost ~/.config/nvim/init.vim source <afile>
+augroup END
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+map ; :Files<cr>
+
+let g:ale_linters = {
+    \ 'c': ['gcc'],
+    \ }
+
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#show_docstring=1
+
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_sign_columns_always = 1
+let g:ale_list_window_size = 10
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 1
+let b:ale_warn_about_trailing_whitespace=0
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:indent_guides_start_level = &sw
+
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+let g:indentLine_bgcolor_term = 202
+
+" https://github.com/neovim/neovim/issues/1936#issuecomment-309311829
+set autoread
+au FocusGained * :checktime
+
+if exists(":Tabularize")
+    nmap <leader>a= :Tabularize /=<cr>
+    vmap <leader>a= :Tabularize /=<cr>
+    nmap <leader>a: :Tabularize /:\zs<cr>
+    vmap <leader>a: :Tabularize /:\zs<cr>
+end
+
+let g:SimplyFold_docstring_preview=1
+au BufNewFile,BufRead *.py setlocal foldmethod=indent foldlevel=99
+
