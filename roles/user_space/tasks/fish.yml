@@ -20,8 +20,6 @@
   git:
     repo: https://github.com/oh-my-fish/oh-my-fish
     dest: /tmp/omf
-    clone: yes
-  tags: [fish]
 
 - name: Install oh-my-fish
   command: >
@@ -32,9 +30,13 @@
     --path=~/.local/share/omf
     --config=~/.config/omf
 
-  tags: [fish]
-  # ignore_errors: yes
+- name: Install tmux/plugins/bobthefish
+  git:
+    repo: https://github.com/oh-my-fish/theme-bobthefish
+    dest: ~/.local/share/omf/themes/bobthefish
 
-# - name: Install tmux/plugins/bobthefish
-#   command: "omf install bobthefish"
-#   tags: [fish]
+- name: Set bobthefish
+  copy:
+    content: >
+      bobthefish
+    dest: ~/.config/omf/theme
