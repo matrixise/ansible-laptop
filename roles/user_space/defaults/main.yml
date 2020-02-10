@@ -87,3 +87,25 @@ user:
   id: stephane
   name: Stéphane Wirtel
   shell: /usr/bin/fish
+
+zeal:
+  docsets:
+    - Ansible
+    - Bash
+    - C
+    - CMake
+    - Django
+    - Docker
+    - Erlang
+    - Go
+    - HTML
+    - Jinja
+    - Markdown
+    - Nginx
+    - Pandas
+    - PostgreSQL
+    - Python_3
+    - SQLAlchemy
+    - SQLite
+    - Vim
+    - VueJS

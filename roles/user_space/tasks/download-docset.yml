@@ -1,0 +1,17 @@
+---
+- name: Get Url of {{ item }}
+  xml:
+    path: ~/src/github.com/Kapeli/feeds/{{ item }}.xml
+    xpath: "/entry/url[1]"
+    content: text
+  register: xml_url
+
+- name: Create the docset url {{ docset_url }}
+  set_fact:
+    docset_url: "{{ xml_url.matches[0].url }}"
+
+- name: Download {{docset_url}} && Extract it
+  unarchive:
+    src: "{{ docset_url }}"
+    dest: ~/.local/share/Zeal/Zeal/docsets/
+    remote_src: yes

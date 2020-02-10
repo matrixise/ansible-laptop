@@ -4,3 +4,5 @@
 - import_tasks: fish.yml
 - import_tasks: tmux.yml
 - import_tasks: kitty.yml
+- import_tasks: zeal.yml
+  tags: [zeal]

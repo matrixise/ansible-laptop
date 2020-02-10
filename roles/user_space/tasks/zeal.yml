@@ -1,0 +1,27 @@
+---
+- name: Clone feeds
+  git:
+    repo: https://github.com/Kapeli/feeds
+    dest: ~/src/github.com/Kapeli/feeds
+
+
+- name: Check docsets directory
+  stat:
+    path: ~/.local/share/Zeal/Zeal/docsets
+  register: docsets_path
+
+- name: Show Docsets
+  debug:
+    var: docsets_path
+
+- name: Create the docsets directory
+  file:
+    path: ~/.local/share/Zeal/Zeal/docsets/
+    state: directory
+    recurse: yes
+  when: docsets_path.stat.isdir is not defined
+
+- name: Download Docsets
+  include_tasks: download-docset.yml
+  loop: "{{ zeal.docsets }}"
+  when: docsets_path.stat.isdir is not defined
