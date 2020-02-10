@@ -1,22 +1,13 @@
+---
 packages:
-  - python3-pip
-  - python3-psutil
-  - neovim
-  - tig
-  - zeal
-  - fish
-  - most
-  - tmux
-  - openssh-server
-  - yamllint
   - ack-grep
   - acpi
   - acpi-call-dkms
   - acpitail
   - acpitool
   - airgraph-ng
-  - aptitude
   - apt-listchanges
+  - aptitude
   - aspell-en
   - axel
   - build-essential
@@ -41,6 +32,7 @@ packages:
   - fdupes
   - ffmpeg
   - firefox-geckodriver
+  - fish
   - fzf
   - gdbserver
   - gimp
@@ -90,6 +82,7 @@ packages:
   - nethogs
   - newsboat
   - ntpdate
+  - openssh-server
   - openttd
   - openttd-data
   - openttd-opengfx
@@ -100,13 +93,15 @@ packages:
   - pipx
   - poedit
   - proxychains-ng
+  - python-openssl
   - python3-dnspython
   - python3-glanceclient
   - python3-neovim
   - python3-novaclient
+  - python3-pip
+  - python3-psutil
   - python3-swiftclient
   - python3-venv
-  - python-openssl
   - rclone
   - reptyr
   - rkhunter
@@ -140,5 +135,6 @@ packages:
   - wifite
   - wireguard
   - xz-utils
+  - yamllint
   - zeal
   - zlib1g-dev
