@@ -2,3 +2,21 @@
   git:
     repo: https://github.com/pyenv/pyenv.git
     dest: ~/.pyenv/
+
+- name: Install PipX
+  pip:
+    name: pipx
+    extra_args: --user --upgrade
+
+- name: Install Python Packages
+  command: "pipx install {{ item }}"
+  loop:
+    - ansible-lint
+    - doc2dash
+    - docker-compose
+    - molecule
+    - poetry
+    - ranger
+    - stormssh
+    - tmuxp
+    - youtube-dl
