@@ -1,4 +1,15 @@
 ---
+- name: Create tmux/plugins directory
+  file:
+    path: ~/.tmux/plugins
+    state: directory
+    recurse: yes
+
+- name: Install Tmux Plugin Manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+
 - name: Copy Tmux
   copy:
     src: tmux.conf
