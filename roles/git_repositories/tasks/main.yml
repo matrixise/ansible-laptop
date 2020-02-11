@@ -9,3 +9,21 @@
     repo: "https://{{ item.0.fqdn }}/{{ item.1 }}"
     dest: "{{ code_workspace.source_dir }}/{{ item.0.fqdn }}/{{ item.1 }}"
   loop: "{{ code_workspace.hosts|subelements('repositories') }}"
+
+- name: Add Upstream to repositories
+  shell: >
+    git remote add fork git@{{ item.0.fqdn }}:{{ item.0.forked_as[item.1] }}.git
+  args:
+    chdir: "{{ code_workspace.source_dir }}/{{ item.0.fqdn }}/{{ item.1 }}"
+  when: item.1 in item.0.forked_as
+  with_subelements:
+    - "{{ code_workspace.hosts }}"
+    - repositories
+  register: git_remote
+  failed_when: >
+    git_remote.rc != 0 and
+    'fatal: remote fork already exists.' not in git_remote.stderr_lines
+  changed_when: >
+    git_remote.rc == 0 and
+    not git_remote.stderr_lines | count and
+    not git_remote.stdout_lines | count

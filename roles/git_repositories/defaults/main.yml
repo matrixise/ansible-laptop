@@ -9,3 +9,10 @@ code_workspace:
         - python/devguide
         - Kapeli/feeds
         - webknjaz/ansible-gentoo-laptop
+        - EuroPython/epcon
+        - EuroPython/ep-tools
+        - EuroPython/ep-config
+      forked_as:
+        python/cpython: matrixise/cpython
+        EuroPython/epcon: matrixise/epcon
+        EuroPython/ep-config: matrixise/europython-ep-config
