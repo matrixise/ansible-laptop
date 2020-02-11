@@ -1,6 +1,7 @@
 ---
 - name: Install Laptop
-
+  vars_files:
+    - secrets.yml
   hosts: localhost
   roles:
     - role: packages

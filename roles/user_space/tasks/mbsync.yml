@@ -1,0 +1,26 @@
+---
+- name: Create ~/.mbsync
+  file:
+    path: ~/.mbsync
+    state: directory
+
+- name: Create the mbsync files
+  template:
+    src: mbsync.j2
+    dest: "~/.mbsync/{{ item.user }}"
+  loop: "{{ mailboxes }}"
+
+- name: Create the maildirs
+  file:
+    path: "~/mail/{{ item.user }}"
+    state: directory
+    recurse: yes
+  loop: "{{ mailboxes }}"
+
+- name: Add crontabs
+  cron:
+    name: mail for {{ item.user }}
+    user: stephane
+    minute: "*/15"
+    job: "/usr/bin/mbsync -a -c ~/.mbsync/{{ item.user }}"
+  loop: "{{ mailboxes }}"
