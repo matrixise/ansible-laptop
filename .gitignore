@@ -1,1 +1,3 @@
 .ansible_cache/
+.envrc
+.vault-password
