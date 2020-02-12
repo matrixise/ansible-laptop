@@ -5,6 +5,7 @@
   tags: [fish, config]
 - import_tasks: tmux.yml
 - import_tasks: kitty.yml
+  tags: [kitty, terminal-emulator]
 - import_tasks: zeal.yml
   tags: [zeal]
 - import_tasks: mbsync.yml
