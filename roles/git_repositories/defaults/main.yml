@@ -13,6 +13,6 @@ code_workspace:
         - EuroPython/ep-tools
         - EuroPython/ep-config
       forked_as:
-        python/cpython: matrixise/cpython
-        EuroPython/epcon: matrixise/epcon
-        EuroPython/ep-config: matrixise/europython-ep-config
+        python/cpython: "{{ user.nickname }}/cpython"
+        EuroPython/epcon: "{{ user.nickname }}/epcon"
+        EuroPython/ep-config: "{{ user.nickname }}/europython-ep-config"

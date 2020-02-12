@@ -57,12 +57,12 @@ nvim:
 
 git_options:
   commit.verbose: 'true'
-  github.user: matrixise
+  github.user: "{{ user.nickname }}"
   user.email: stephane@wirtel.be
   user.name: Stéphane Wirtel
   core.quotepath: 'false'
   # core.autocrlf: input
-  core.editor: /usr/bin/nvim
+  core.editor: "{{ editor }}"
   push.default: simple
 
   alias.branch-name: symbolic-ref --short HEAD
