@@ -1,4 +1,9 @@
 ---
+- name: Create the kitty config directory
+  file:
+    path: ~/.config/kitty/
+    state: directory
+
 - name: Configure kitty
   copy:
     src: kitty.conf
