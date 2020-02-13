@@ -13,6 +13,7 @@ code_workspace:
         - EuroPython/ep-tools
         - EuroPython/ep-config
         - matrixise/ansible-laptop
+        - matrixise/tor-downloader
       forked_as:
         python/cpython: "{{ user.nickname }}/cpython"
         EuroPython/epcon: "{{ user.nickname }}/epcon"
