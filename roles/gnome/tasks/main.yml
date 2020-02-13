@@ -15,11 +15,11 @@
     dest: ~/.themes/Transparent-Shell-Theme
   tags: [gnome]
 
-- name: Configure Gnome
-  dconf:
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-    state: present
-  loop: "{{ dconf|dict2items }}"
-  tags: [gnome, dconf]
+  # - name: Configure Gnome
+  #   dconf:
+  #     key: "{{ item.key }}"
+  #     value: "{{ item.value }}"
+  #     state: present
+  #   loop: "{{ dconf|dict2items }}"
+  #   tags: [gnome, dconf]
 

@@ -9,6 +9,6 @@
     src: kitty.conf
     dest: ~/.config/kitty/kitty.conf
 
-- name: Define kitty as default x-terminal-emulator
-  become: yes
-  shell: update-alternatives --set x-terminal-emulator /usr/bin/kitty
+    # - name: Define kitty as default x-terminal-emulator
+    #   become: yes
+    #   shell: update-alternatives --set x-terminal-emulator /usr/bin/kitty
