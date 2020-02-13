@@ -11,9 +11,9 @@ set PATH /var/lib/snapd/snap/bin $PATH
 set -x PAGER /usr/bin/most
 set -x LANG en_US.UTF-8
 
-set -x EDITOR /usr/bin/nvim
+set -x EDITOR {{ editor }}
 
-set -x GOPATH /home/{{ user.id }}/gocode:/usr/lib/golang
+set -x GOPATH /home/{{ user.unix }}/gocode:/usr/lib/golang
 
 alias code="flatpak run com.visualstudio.code"
 

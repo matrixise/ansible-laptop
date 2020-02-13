@@ -1,5 +1,7 @@
 user:
+  unix: stephane
   name: Stéphane Wirtel
   email: stephane@wirtel.be
   nickname: matrixise
+  shell: /usr/bin/fish
 editor: /usr/bin/nvim

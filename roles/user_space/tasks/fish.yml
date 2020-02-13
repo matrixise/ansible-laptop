@@ -1,3 +1,4 @@
+---
 - name: Check if ~/.config/fish exists
   stat:
     path: ~/.config/fish
@@ -7,8 +8,8 @@
   file:
     path: ~/.config/fish
     state: directory
-    owner: "{{ user.id }}"
-    group: "{{ user.id }}"
+    owner: "{{ user.unix }}"
+    group: "{{ user.unix }}"
   when: status.stat.isdir is not defined
 
 - name: Create the fish config file

@@ -83,11 +83,6 @@ git_options:
   alias.visual: >-
     !tig
 
-user:
-  id: stephane
-  name: Stéphane Wirtel
-  shell: /usr/bin/fish
-
 zeal:
   docsets:
     - Ansible
