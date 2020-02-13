@@ -35,6 +35,7 @@ distribution_packages:
   - python3-venv
   - sqlite3
   - tk-dev
+  - torbrowser-launcher
   - tp-smapi-dkms
   - weather-util
   - wifite
