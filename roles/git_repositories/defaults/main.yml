@@ -12,6 +12,7 @@ code_workspace:
         - EuroPython/epcon
         - EuroPython/ep-tools
         - EuroPython/ep-config
+        - matrixise/ansible-laptop
       forked_as:
         python/cpython: "{{ user.nickname }}/cpython"
         EuroPython/epcon: "{{ user.nickname }}/epcon"
