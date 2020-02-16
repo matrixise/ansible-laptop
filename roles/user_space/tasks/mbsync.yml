@@ -9,13 +9,15 @@
     src: mbsync.j2
     dest: "~/.mbsync/{{ item.user }}"
   loop: "{{ mailboxes }}"
+  no_log: true
 
 - name: Create the maildirs
   file:
     path: "~/mail/{{ item.user }}"
     state: directory
-    recurse: yes
+    recurse: true
   loop: "{{ mailboxes }}"
+  no_log: true
 
 - name: Add crontabs
   cron:
@@ -24,3 +26,4 @@
     minute: "*/15"
     job: "/usr/bin/mbsync -a -c ~/.mbsync/{{ item.user }}"
   loop: "{{ mailboxes }}"
+  no_log: true
