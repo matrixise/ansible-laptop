@@ -12,3 +12,4 @@
 - name: Define kitty as default x-terminal-emulator
   become: yes
   shell: update-alternatives --set x-terminal-emulator /usr/bin/kitty
+  ignore_errors: yes

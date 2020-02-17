@@ -6,10 +6,12 @@
   hosts: localhost
   roles:
     - role: packages
-      become: yes
+      become: true
 
     - flatpak
-    - gnome
+    - role: gnome
+      become_user: stephane
+
     - python
     - user_space
     - role: git_repositories
