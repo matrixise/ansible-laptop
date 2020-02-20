@@ -1,6 +1,11 @@
+---
 - name: Install Specific Packages for Fedora
   include_tasks: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
+
+- name: Install Specific Packages for Debian
+  include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Load the common packages
   include_vars: commons.yml
@@ -12,4 +17,3 @@
   package:
     name: "{{ packages + distribution_packages }}"
     state: present
-

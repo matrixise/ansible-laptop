@@ -1,0 +1,10 @@
+- name: Add Repo for MS Teams
+  apt_repository:
+    repo: deb https://packages.microsoft.com/repos/ms-teams stable main
+    state: present
+
+- name: Install Teams
+  apt:
+    name:
+      - teams
+    state: present
