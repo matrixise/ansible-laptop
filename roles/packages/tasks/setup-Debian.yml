@@ -1,4 +1,9 @@
 ---
+- name: Add APT Key for Microsoft Teams
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
 - name: Add Repo for MS Teams
   apt_repository:
     repo: deb https://packages.microsoft.com/repos/ms-teams stable main
