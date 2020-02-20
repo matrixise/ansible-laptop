@@ -22,6 +22,7 @@ packages:
   - fdupes
   - ffmpeg
   - fish
+  - flatpak
   - fzf
   - gimp
   - git
@@ -94,6 +95,5 @@ packages:
   - vnstat
   - wavemon
   - wget
-  - wireguard
   - yamllint
   - zeal
