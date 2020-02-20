@@ -1,3 +1,4 @@
+---
 - name: Add Repo for MS Teams
   apt_repository:
     repo: deb https://packages.microsoft.com/repos/ms-teams stable main
@@ -7,4 +8,5 @@
   apt:
     name:
       - teams
+    update_cache: true
     state: present
