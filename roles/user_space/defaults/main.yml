@@ -105,3 +105,6 @@ zeal:
     - Vim
     - VueJS
 
+neovim:
+  python3: nvim-py3
+  python2: nvim-py2

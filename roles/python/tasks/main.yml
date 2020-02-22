@@ -1,8 +1,3 @@
-- name: Install PyEnv
-  git:
-    repo: https://github.com/pyenv/pyenv.git
-    dest: ~/.pyenv/
-
 - name: Install PipX
   pip:
     name: pipx

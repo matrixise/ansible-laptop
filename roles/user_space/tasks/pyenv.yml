@@ -1,0 +1,14 @@
+---
+- name: Install PyEnv
+  import_role:
+    name: avanov.pyenv
+  vars:
+    pyenv_path: "{{ansible_env.HOME}}/.pyenv"
+    pyenv_update_git_install: true
+    pyenv_python_versions: [3.8.1, 2.7.17]
+    pyenv_virtualenvs:
+      - venv_name: nvim-py2
+        py_version: "2.7.17"
+      - venv_name: nvim-py3
+        py_version: "3.8.1"
+  tags: [pyenv]
