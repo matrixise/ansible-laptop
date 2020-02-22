@@ -1,3 +1,4 @@
+---
 - name: Check if directory for vim-plug alreasy exist
   stat:
     path: ~/.local/share/nvim/site/autoload/
@@ -34,5 +35,14 @@
     src: init.vim.j2
     dest: ~/.config/nvim/init.vim
 
+- name: Install neovim for python2
+  command: "~/.pyenv/versions/{{neovim.python2}}/bin/pip install neovim"
+
+- name: Install neovim for python3
+  command: "~/.pyenv/versions/{{neovim.python3}}/bin/pip install neovim"
+
 - name: Install the NeoVIM plugins
   command: nvim +PlugInstall! +qall
+
+- name: Update all the NeoVIM plugins
+  command: nvim +PlugUpdate! +qall

@@ -5,13 +5,13 @@ set nocompatible
 filetype off
 
 " https://neovim.io/doc/user/provider.html
-let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_node_provider = 0
 
 " Don't forget to install yenv"
-let g:python3_host_prog='/home/{{ user.unix }}/.pyenv/versions/3.8.1/bin/python'
+let g:python_host_prog='/home/{{ user.unix }}/.pyenv/versions/{{ neovim.python2 }}/bin/python'
+let g:python3_host_prog='/home/{{ user.unix }}/.pyenv/versions/{{ neovim.python3 }}/bin/python'
 
 call plug#begin()
 {% for plugin in nvim.plugins or [] %}
