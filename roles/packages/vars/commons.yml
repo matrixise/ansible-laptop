@@ -64,6 +64,7 @@ packages:
   - poedit
   - proxychains-ng
   - python3-glanceclient
+  - python3-openstackclient
   - python3-neovim
   - python3-novaclient
   - python3-pip
