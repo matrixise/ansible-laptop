@@ -6,8 +6,9 @@
   hosts: localhost
   roles:
     - role: packages
-      become: yes
-
+      become: true
+    - role: docker
+      become: true
     - flatpak
     - gnome
     - python
