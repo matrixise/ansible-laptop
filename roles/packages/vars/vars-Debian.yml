@@ -1,12 +1,15 @@
+---
 distribution_packages:
   - ack-grep
   - acpi-call-dkms
   - acpitail
   - airgraph-ng
+  - apt-file
   - apt-listchanges
   - aptitude
   - build-essential
   - chromium-browser
+  - cpufrequtils
   - exfat-fuse
   - fancontrol
   - firefox-geckodriver
