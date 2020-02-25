@@ -19,3 +19,5 @@
   tags: [restic]
 - import_tasks: yq.yml
   tags: [yq]
+- import_tasks: pup.yml
+  tags: [pup]
