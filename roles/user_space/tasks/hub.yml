@@ -1,0 +1,23 @@
+---
+- name: Does it already exist?
+  stat:
+    path: /tmp/hub-linux-amd64-2.14.1/bin/hub
+  register: st_hub
+
+- name: Download Hub from Github
+  unarchive:
+    src: https://github.com/github/hub/releases/download/v2.14.1/hub-linux-amd64-2.14.1.tgz
+    dest: /tmp
+    remote_src: true
+  when: not st_hub.stat.exists
+
+- name: Copy the file
+  copy:
+    src: /tmp/hub-linux-amd64-2.14.1/bin/hub
+    dest: ~/.local/bin/hub
+  delegate_to: localhost
+
+- name: chmod ~/.local/bin/hub
+  file:
+    path: ~/.local/bin/hub
+    mode: u+x

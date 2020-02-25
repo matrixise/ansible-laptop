@@ -13,3 +13,5 @@
   tags: [zeal]
 - import_tasks: mbsync.yml
   tags: [mbsync, config]
+- import_tasks: hub.yml
+  tags: [hub]
