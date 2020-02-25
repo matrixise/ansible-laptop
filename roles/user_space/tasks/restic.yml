@@ -1,0 +1,38 @@
+---
+- name: restic already downloaded?
+  stat:
+    path: /tmp/restic_0.9.6_linux_amd64.bz2
+  register: st_restic_archive
+
+- name: restic already installed?
+  stat:
+    path: ~/.local/bin/restic
+  register: st_restic
+
+- name: Download restic
+  get_url:
+    url: https://github.com/restic/restic/releases/download/v0.9.6/restic_0.9.6_linux_amd64.bz2
+    dest: /tmp/
+  when: not st_restic_archive.stat.exists
+
+- name: Uncompress restic
+  command: >
+    bunzip2 
+      --keep
+      --decompress
+      --force
+      /tmp/restic_0.9.6_linux_amd64.bz2
+  when: not st_restic.stat.exists
+
+- name: Copy uncompressed file
+  copy:
+    src: /tmp/restic_0.9.6_linux_amd64
+    dest: ~/.local/bin/restic
+  delegate_to: localhost
+  when: not st_restic.stat.exists
+
+- name: Set right access
+  file:
+    path: ~/.local/bin/restic
+    mode: u+x
+  when: not st_restic.stat.exists

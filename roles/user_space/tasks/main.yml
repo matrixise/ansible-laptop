@@ -15,3 +15,5 @@
   tags: [mbsync, config]
 - import_tasks: hub.yml
   tags: [hub]
+- import_tasks: restic.yml
+  tags: [restic]
