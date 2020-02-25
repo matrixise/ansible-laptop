@@ -17,3 +17,5 @@
   tags: [hub]
 - import_tasks: restic.yml
   tags: [restic]
+- import_tasks: yq.yml
+  tags: [yq]

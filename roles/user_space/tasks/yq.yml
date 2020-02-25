@@ -1,0 +1,17 @@
+---
+- name: yq already installed?
+  stat:
+    path: ~/.local/bin/yq
+  register: st_yq
+
+- name: Download yq
+  get_url:
+    url: https://github.com/mikefarah/yq/releases/download/3.1.2/yq_linux_amd64
+    dest: ~/.local/bin/yq
+  when: not st_yq.stat.exists
+
+- name: Set right access
+  file:
+    path: ~/.local/bin/yq
+    mode: u+x
+  when: not st_yq.stat.exists
