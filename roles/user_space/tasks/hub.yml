@@ -21,3 +21,26 @@
   file:
     path: ~/.local/bin/hub
     mode: u+x
+
+- name: Does it already exist?
+  stat:
+    path: /tmp/lab
+  register: st_lab
+
+- name: Download Lab from Github
+  unarchive:
+    src: https://github.com/zaquestion/lab/releases/download/v0.17.2/lab_0.17.2_linux_amd64.tar.gz
+    dest: /tmp
+    remote_src: true
+  when: not st_lab.stat.exists
+
+- name: Copy the file
+  copy:
+    src: /tmp/lab
+    dest: ~/.local/bin/lab
+  delegate_to: localhost
+
+- name: chmod ~/.local/bin/lab
+  file:
+    path: ~/.local/bin/lab
+    mode: u+x
