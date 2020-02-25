@@ -1,0 +1,18 @@
+---
+- name: terraform already installed?
+  stat:
+    path: ~/.local/bin/terraform
+  register: st_terraform
+
+- name: Download terraform
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
+    dest: ~/.local/bin/
+    remote_src: true
+  when: not st_terraform.stat.exists
+
+- name: Set right access
+  file:
+    path: ~/.local/bin/terraform
+    mode: u+x
+  when: not st_terraform.stat.exists

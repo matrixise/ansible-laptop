@@ -21,3 +21,5 @@
   tags: [yq]
 - import_tasks: pup.yml
   tags: [pup]
+- import_tasks: terraform.yml
+  tags: [terraform]
