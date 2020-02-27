@@ -1,3 +1,4 @@
 .ansible_cache/
 .envrc
 .vault-password
+.vault-pass.txt
