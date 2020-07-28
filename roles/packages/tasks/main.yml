@@ -17,3 +17,8 @@
   package:
     name: "{{ packages + distribution_packages }}"
     state: present
+
+- name: Install snaps app
+  snap:
+    name:
+      - bw

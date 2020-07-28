@@ -36,6 +36,7 @@ distribution_packages:
   - openttd-opensfx
   - python3-dnspython
   - python3-venv
+  - snapd
   - sqlite3
   - tk-dev
   - torbrowser-launcher
