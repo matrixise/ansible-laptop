@@ -1,0 +1,30 @@
+---
+- name: Install SpeedTest
+  become: true
+  hosts: localhost
+  tasks:
+    - name: Install dependencies
+      apt:
+        pkg:
+          - gnupg1
+          - apt-transport-https
+          - dirmngr
+        state: present
+
+    - name: Add the Key for the Repository
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 379CE192D401AB61
+        state: present
+
+
+    - name: Add Repository
+      apt_repository:
+        repo: "deb https://ookla.bintray.com/debian generic main"
+        filename: "speedtest"
+
+    - name: Install Speedtest
+      apt:
+        pkg: [speedtest]
+        update_cache: true
+        state: present
