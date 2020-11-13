@@ -1,7 +1,7 @@
 ---
 - name: restic already downloaded?
   stat:
-    path: /tmp/restic_0.9.6_linux_amd64.bz2
+    path: /tmp/restic_0.11.0_linux_amd64.bz2
   register: st_restic_archive
 
 - name: restic already installed?
@@ -11,7 +11,7 @@
 
 - name: Download restic
   get_url:
-    url: https://github.com/restic/restic/releases/download/v0.9.6/restic_0.9.6_linux_amd64.bz2
+    url: https://github.com/restic/restic/releases/download/v0.11.0/restic_0.11.0_linux_amd64.bz2
     dest: /tmp/
   when: not st_restic_archive.stat.exists
 
@@ -21,12 +21,12 @@
       --keep
       --decompress
       --force
-      /tmp/restic_0.9.6_linux_amd64.bz2
+      /tmp/restic_0.11.0_linux_amd64.bz2
   when: not st_restic.stat.exists
 
 - name: Copy uncompressed file
   copy:
-    src: /tmp/restic_0.9.6_linux_amd64
+    src: /tmp/restic_0.11.0_linux_amd64
     dest: ~/.local/bin/restic
   delegate_to: localhost
   when: not st_restic.stat.exists
