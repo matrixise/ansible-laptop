@@ -10,9 +10,11 @@
       tags: [packages]
     - role: docker
       become: true
-    - flatpak
+    - role: flatpak
+      tags: [flatpak]
     - gnome
-    - python
+    - role: python
+      tags: [python]
     - user_space
     - role: git_repositories
       tags: [git]
